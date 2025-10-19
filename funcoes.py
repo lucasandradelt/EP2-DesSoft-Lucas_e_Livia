@@ -24,14 +24,20 @@ def faz_jogada (tabuleiro, linha, coluna):
     elif tabuleiro[linha][coluna] == 0:
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
-    
-    
-def posiciona_frota(dic_frota):
-    tab2 = [[0 for _ in range(10)] for _ in range(10)]
-    for nav, configuracoes in dic_frota.items():
-        for config in configuracoes:
-            for pos in config:
-                linha, coluna = pos
-                tab2[linha][coluna] = 1
-    
-    return tab2
+
+def afundados (dicionario,tabuleiro): # dic. recebe info das embarcs., no dic: recebe linha e coluna dos navios 
+    i=0 #contagem de navios --> add contador 
+    for i in dicionario.values:
+        for embarcacao in i:
+            afundados = 0 # conta os que afundaram 
+        for linha, coluna in i: #p/ verificar em quais posições eles afundaram
+            if tabuleiro[linha][coluna] == 'X':
+                afundados+=1
+        # falta só o caso em que len('X') == len(navio) --> afundou 
+        if afundados[linha][coluna] == '-':
+            i+=1
+    return i
+
+            
+            
+
