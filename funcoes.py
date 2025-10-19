@@ -27,7 +27,7 @@ def faz_jogada (tabuleiro, linha, coluna):
 
 def afundados (dicionario,tabuleiro): # dic. recebe info das embarcs., no dic: recebe linha e coluna dos navios 
     i=0 #contagem de navios --> add contador 
-    for i in dicionario.values:
+    for i in dicionario.values():
         for embarcacao in i:
             afundados = 0 # conta os que afundaram 
         for linha, coluna in i: #p/ verificar em quais posições eles afundaram
