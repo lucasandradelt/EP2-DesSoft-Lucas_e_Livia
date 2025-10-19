@@ -25,6 +25,16 @@ def faz_jogada (tabuleiro, linha, coluna):
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
 
+def posiciona_frota(dic_frota):
+    tab2 = [[0 for _ in range(10)] for _ in range(10)]
+    for nav, configuracoes in dic_frota.items():
+        for config in configuracoes:
+            for pos in config:
+                linha, coluna = pos
+                tab2[linha][coluna] = 1
+    
+    return tab2
+
 def afundados(dicionario, tabuleiro):  # dic. recebe info das embarcações, com linha e coluna dos navios
     i = 0  # contagem de navios afundados
 
