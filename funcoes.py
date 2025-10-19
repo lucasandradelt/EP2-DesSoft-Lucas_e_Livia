@@ -25,18 +25,22 @@ def faz_jogada (tabuleiro, linha, coluna):
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
 
-def afundados (dicionario,tabuleiro): # dic. recebe info das embarcs., no dic: recebe linha e coluna dos navios 
-    i=0 #contagem de navios --> add contador 
-    for i in dicionario.values():
-        for embarcacao in i:
-            afundados = 0 # conta os que afundaram 
-        for linha, coluna in i: #p/ verificar em quais posições eles afundaram
-            if tabuleiro[linha][coluna] == 'X':
-                afundados+=1
-        # falta só o caso em que len('X') == len(navio) --> afundou 
-        if afundados[linha][coluna] == '-':
-            i+=1
+def afundados(dicionario, tabuleiro):  # dic. recebe info das embarcações, com linha e coluna dos navios
+    i = 0  # contagem de navios afundados
+
+    for embarcacoes in dicionario.values():  # percorre as listas dentro do dicionário
+        for embarcacao in embarcacoes:       # percorre cada navio individualmente
+            afundados = 0                    # conta as partes do navio que foram atingidas
+
+            for linha, coluna in embarcacao:  # verifica as posições no tabuleiro
+                if tabuleiro[linha][coluna] == 'X':
+                    afundados += 1
+
+            # se o número de partes atingidas for igual ao tamanho do navio, ele afundou
+            if afundados == len(embarcacao):
+                i += 1
     return i
+
 
             
             
