@@ -7,3 +7,4 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
         elif orientacao == "horizontal": # II II II horizontal: coluna diferente e mesma linha:
             opcoes.append([linha,coluna+i])
     return opcoes
+
