@@ -51,6 +51,27 @@ def afundados(dicionario, tabuleiro):  # dic. recebe info das embarcações, com
                 i += 1
     return i
 
+def posicao_valida(dic, lin, col, orient, tam):
+    posicoes_navio = define_posicoes(lin, col, orient, tam)
+
+    for l, c in posicoes_navio:
+        if not (0 <= l < 10 and 0 <= c < 10):
+            return False
+
+    for cada_pos in posicoes_navio:
+        for configuracoes in dic.values():
+            for config in configuracoes:
+                for pos in config:
+                    if pos == cada_pos:
+                        return False
+                    
+    
+    return True
+
+
+
+
+
 
             
             
