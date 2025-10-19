@@ -8,3 +8,17 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             opcoes.append([linha,coluna+i])
     return opcoes
 
+def preenche_frota(dic_frota, nome, lin, col, orient, tam):
+    
+    posicoes_novo_navio = define_posicoes(lin, col, orient, tam)
+    if nome in dic_frota:
+        dic_frota[nome].append(posicoes_novo_navio)
+    else:
+        dic_frota[nome] = [posicoes_novo_navio]
+    
+    return dic_frota
+
+   
+
+    
+    
