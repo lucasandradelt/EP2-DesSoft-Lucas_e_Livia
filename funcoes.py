@@ -1,4 +1,6 @@
 def define_posicoes(linha, coluna, orientacao, tamanho):
+    linha = int(linha)
+    coluna = int(coluna)
     pos_inicial = [linha, coluna]
     opcoes = []
     for i in range(tamanho):
@@ -9,7 +11,8 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     return opcoes
 
 def preenche_frota(dic_frota, nome, lin, col, orient, tam):
-    
+    lin = int(lin)
+    col = int(col)
     posicoes_novo_navio = define_posicoes(lin, col, orient, tam)
     if nome in dic_frota:
         dic_frota[nome].append(posicoes_novo_navio)
@@ -51,19 +54,23 @@ def afundados(dicionario, tabuleiro):  # dic. recebe info das embarcações, com
                 i += 1
     return i
 
-def posicao_valida (dic_frota, linha, coluna, orientacao, tamanho):
+def posicao_valida(dic_frota, linha, coluna, orientacao, tamanho):
+    linha = int(linha)
+    coluna = int(coluna)
     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
-    i = 0
-    for j,k in posicoes:
-        if k<0 or k>9 or j<0 or j>9:
-            i+=1
+
+    for j, k in posicoes:
+        if not (0 <= j <= 9 and 0 <= k <= 9):
+            return False
+
     for embarcacoes in dic_frota.values():
         for embarcacao in embarcacoes:
             for pos in embarcacao:
                 if pos in posicoes:
-                    i+=1
-    if i ==0:
-        return True 
+                    return False
+
+    return True
+
 
 
 
