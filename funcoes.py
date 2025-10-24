@@ -54,21 +54,37 @@ def afundados(dicionario, tabuleiro):  # dic. recebe info das embarcações, com
                 i += 1
     return i
 
+# def posicao_valida(dic_frota, linha, coluna, orientacao, tamanho):
+#     linha = int(linha)
+#     coluna = int(coluna)
+#     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+
+#     for j, k in posicoes:
+#         if not (0 <= j <= 9 and 0 <= k <= 9):
+#             return False
+
+#     for embarcacoes in dic_frota.values():
+#         for embarcacao in embarcacoes:
+#             for pos in embarcacao:
+#                 if pos in posicoes:
+#                     return False
+
+#     return True
+
 def posicao_valida(dic_frota, linha, coluna, orientacao, tamanho):
     linha = int(linha)
     coluna = int(coluna)
+    if orientacao not in ("vertical", "horizontal"):
+        return False
     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
-
     for j, k in posicoes:
         if not (0 <= j <= 9 and 0 <= k <= 9):
             return False
-
     for embarcacoes in dic_frota.values():
         for embarcacao in embarcacoes:
             for pos in embarcacao:
                 if pos in posicoes:
                     return False
-
     return True
 
 def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
