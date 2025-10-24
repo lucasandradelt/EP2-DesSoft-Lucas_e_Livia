@@ -93,7 +93,7 @@
 #         print("Parabéns! Você derrubou todos os navios do seu oponente!")
 #         jogando = False
 
-from funcoes import define_posicoes, preenche_frota, faz_jogada, posiciona_frota, afundados, posicao_valida, monta_tabuleiros
+from funcoes import *
 
 frota = {
     "porta-aviões": [],
@@ -151,11 +151,12 @@ tabuleiro_jogador = posiciona_frota(frota)
 total_navios_oponente = 0
 for lista in frota_oponente.values():
     total_navios_oponente += len(lista)
-
+mostra_tabuleiro = True
 jogando = True
 while jogando:
-    print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
-
+    if mostra_tabuleiro:
+        print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+    monta_tabuleiros = True
     while True:
         entrada = input("Jogador, qual linha deseja atacar? ")
         try:
@@ -180,6 +181,7 @@ while jogando:
 
     if str(tabuleiro_oponente[linha_input][coluna_input]) in "X-":
         print(f"A posição linha {linha_input} e coluna {coluna_input} já foi informada anteriormente!")
+        monta_tabuleiros = False
         continue  # <--- aqui reiniciamos o loop para pedir outra jogada
     else:
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_input, coluna_input)
